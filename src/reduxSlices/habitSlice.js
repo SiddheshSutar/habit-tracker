@@ -14,7 +14,11 @@ export const habitSlice = createSlice({
       state.text = action.payload
     },
     addHabit: (state, action) => {
-      state.habits.push(state.text)
+      state.habits.push({
+        id: (new Date()).toString(),
+        title: state.text,
+        days: []
+      })
       state.text = ''
     },
     removeHabit: (state, action) => {

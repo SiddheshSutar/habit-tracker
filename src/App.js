@@ -2,6 +2,7 @@ import "./styles.css";
 import { Provider } from 'react-redux'
 import { store } from "./store";
 import Notifications from "./Notifications/Notifications";
+import Content from "./Content/Content";
 
 export default function App() {
 
@@ -11,9 +12,7 @@ export default function App() {
         Track your habits
       </h1>
       <Provider store={store}>
-        <div className='content'>
-          Hi
-        </div>
+        <Content />
         <Notifications />
       </Provider>
     </div>
