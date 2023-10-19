@@ -2,8 +2,8 @@
   padding: 0;
   margin: 0;
 
-  --main-blue: #0ecbe9;
-  --main-blue-dark: #0897ad;
+  --main-dark: #f3a942;
+  --main-light: #ffe6c7;
   --grey-main: #5e5a5a;
 }
 
@@ -16,7 +16,7 @@
   width: 100%;
   height: 100vh;
   font-family: sans-serif;
-  background-color: #c7f8ff;
+  background-color: var(--main-light);
   overflow-x: hidden;
 }
 
@@ -31,7 +31,7 @@ h1 {
   width: 97%;
   display: flex;
   justify-content: flex-start;
-  background-color: #0ecbe9;
+  background-color: var(--main-dark);
   padding-block: 1rem;
   padding-inline: 20px;
   color: #fff;
