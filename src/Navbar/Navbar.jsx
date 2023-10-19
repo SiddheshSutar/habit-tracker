@@ -1,7 +1,8 @@
-import { Box, Container, Grid, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, Tab, Tabs, Typography } from '@mui/material';
 import styles from './navbar.module.scss'
 import { useState } from 'react';
 import { DetailsContent } from '../Content/Content';
+import AddIcon from '@mui/icons-material/Add';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -25,19 +26,19 @@ function CustomTabPanel(props) {
 
 const Tabbs = (props) => {
     return <Tabs
-    {...props}
-    sx={{
-        '.MuiButtonBase-root': {
-            fontWeight: 'bold',
-            color: 'var(--grey-main)'
-        },
-        '& .MuiButtonBase-root.Mui-selected': {
-            color: `var(--main-dark)`,
-        },
-        '& .MuiTabs-indicator': {
-            backgroundColor: `var(--main-dark)`
-        },
-    }}
+        {...props}
+        sx={{
+            '.MuiButtonBase-root': {
+                fontWeight: 'bold',
+                color: 'var(--grey-main)'
+            },
+            '& .MuiButtonBase-root.Mui-selected': {
+                color: `var(--main-dark)`,
+            },
+            '& .MuiTabs-indicator': {
+                backgroundColor: `var(--main-dark)`
+            },
+        }}
     />
 }
 
@@ -49,12 +50,18 @@ const Navbar = () => {
     };
 
     return (
-        <Container>
-            <Box>
+        <Container maxWidth='xl' className={styles['container']}>
+            <Box className={styles['nav-strip']}>
                 <Tabbs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Detailed View" />
                     <Tab label="Week View" />
                 </Tabbs>
+                <Button type='button' variant='outlined'
+                    className={styles['add-btn']}
+                    startIcon={<AddIcon />}
+                >
+                    Add Habit
+                </Button>
             </Box>
             <CustomTabPanel value={value} index={0}>
                 <DetailsContent />
