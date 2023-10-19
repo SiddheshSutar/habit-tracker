@@ -3,6 +3,9 @@ import styles from './navbar.module.scss'
 import { useState } from 'react';
 import { DetailsContent } from '../Content/Content';
 import AddIcon from '@mui/icons-material/Add';
+import { useDispatch, useSelector } from 'react-redux';
+import { habitSelector, toggleModal } from '../reduxSlices/habitSlice';
+import CustomModal from '../DetailedView/CustomModal';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -49,6 +52,9 @@ const Navbar = () => {
         setValue(newValue);
     };
 
+    const dispatch = useDispatch()
+    const { modalOpen } = useSelector(habitSelector)
+
     return (
         <Container maxWidth='xl' className={styles['container']}>
             <Box className={styles['nav-strip']}>
@@ -59,6 +65,9 @@ const Navbar = () => {
                 <Button type='button' variant='outlined'
                     className={styles['add-btn']}
                     startIcon={<AddIcon />}
+                    onClick={e => {
+                        dispatch(toggleModal(true))
+                    }}
                 >
                     Add Habit
                 </Button>
@@ -69,6 +78,12 @@ const Navbar = () => {
             <CustomTabPanel value={value} index={1}>
                 Item Two
             </CustomTabPanel>
+            <CustomModal
+                open={modalOpen}
+                handleClose={() => dispatch(toggleModal(false))}
+            >
+                <div>Hell</div>
+            </CustomModal>
         </Container>
     );
 }

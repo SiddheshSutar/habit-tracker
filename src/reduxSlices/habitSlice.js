@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   text: '',
-  habits: []
+  habits: [],
+  modalOpen: false
 }
 
 
@@ -24,11 +25,14 @@ export const habitSlice = createSlice({
     removeHabit: (state, action) => {
       state.habits = state.habits.filter((item, index) => item.id !== action.payload.id)
     },
+    toggleModal: (state, action) => {
+      state.modalOpen = action.payload
+    },
   }
 })
 
 export const habitReducer = habitSlice.reducer
 
-export const { handleTextChange, addHabit, removeHabit } = habitSlice.actions
+export const { handleTextChange, addHabit, removeHabit, toggleModal } = habitSlice.actions
 
 export const habitSelector = state => state.habitReducer
