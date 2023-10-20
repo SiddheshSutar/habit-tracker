@@ -5,12 +5,13 @@ import { DetailsContent } from '../Content/Content';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, toggleModal } from '../reduxSlices/habitSlice';
-import { DialogBox } from '../Dialog/DialogBox';
+import { CollapseExpand } from '../CollapseExpand/CollapseExpand';
 // import CustomModal from '../DetailedView/CustomModal';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
 
+    if (!children) return <></>
     return (
         <div
             role="tabpanel"
@@ -57,13 +58,20 @@ const Navbar = () => {
     const { modalOpen } = useSelector(habitSelector)
 
     return (
-        <Container maxWidth='xl' className={styles['container']}>
+        <Box
+            className={styles['container']}
+        // sx={{
+        //     '.MuiContainer-root': {
+        //         paddingInline: 0
+        //     }
+        // }}
+        >
             <Box className={styles['nav-strip']}>
-                <Tabbs value={value} onChange={handleChange} aria-label="basic tabs example">
+                <Tabbs className={styles['tabs-wrapper']} value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Detailed View" />
                     <Tab label="Week View" />
                 </Tabbs>
-                <Button type='button' variant='outlined'
+                {/* <Button type='button' variant='outlined'
                     className={styles['add-btn']}
                     startIcon={<AddIcon />}
                     onClick={e => {
@@ -71,21 +79,21 @@ const Navbar = () => {
                     }}
                 >
                     Add Habit
-                </Button>
+                </Button> */}
             </Box>
             <CustomTabPanel value={value} index={0}>
-                <DetailsContent />
+                {/* <DetailsContent /> */}
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
                 Item Two
             </CustomTabPanel>
-            <DialogBox
-                open={modalOpen}
+            <CollapseExpand
+                title={'+ Add Habit'}
                 handleClose={() => dispatch(toggleModal(false))}
             >
-                <div>Hell</div>
-            </DialogBox>
-        </Container>
+                <DetailsContent />
+            </CollapseExpand>
+        </Box>
     );
 }
 

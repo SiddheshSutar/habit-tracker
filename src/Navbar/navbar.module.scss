@@ -1,6 +1,8 @@
 .container {
+    width: 100%;
     
     .nav-strip {
+        padding-inline: 20px;
         position: relative;
         display: flex;
         justify-content: space-between;
