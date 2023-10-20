@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { DetailsContent } from '../Content/Content';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
-import { habitSelector, toggleModal } from '../reduxSlices/habitSlice';
+import { habitSelector, toggleSection } from '../reduxSlices/habitSlice';
 import { CollapseExpand } from '../CollapseExpand/CollapseExpand';
 // import CustomModal from '../DetailedView/CustomModal';
 
@@ -55,7 +55,7 @@ const Navbar = () => {
     };
 
     const dispatch = useDispatch()
-    const { modalOpen } = useSelector(habitSelector)
+    const { sectionOpen } = useSelector(habitSelector)
 
     return (
         <Box
@@ -75,7 +75,7 @@ const Navbar = () => {
                     className={styles['add-btn']}
                     startIcon={<AddIcon />}
                     onClick={e => {
-                        dispatch(toggleModal(true))
+                        dispatch(toggleSection(true))
                     }}
                 >
                     Add Habit
@@ -89,7 +89,8 @@ const Navbar = () => {
             </CustomTabPanel>
             <CollapseExpand
                 title={'+ Add Habit'}
-                handleClose={() => dispatch(toggleModal(false))}
+                open={sectionOpen}
+                handleClose={() => dispatch(toggleSection(false))}
             >
                 <DetailsContent />
             </CollapseExpand>

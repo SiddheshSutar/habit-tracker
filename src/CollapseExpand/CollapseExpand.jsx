@@ -4,6 +4,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const CollapseExpand = ({
     title,
+    open,
     handleClose,
     children
 }) => {
@@ -15,6 +16,8 @@ export const CollapseExpand = ({
                 }
             }}>
             <Accordion
+                expanded={open}
+                onChange={e => { handleClose(!open) }}
                 sx={{
                     '.MuiAccordionSummary-content': {
                         display: 'flex',
