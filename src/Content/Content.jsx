@@ -6,7 +6,7 @@ import styles from './content.module.scss'
 
 export const DetailsContent = () => {
     return <>
-        <Form />
+        {/* <Form /> */}
         <DetailedView />
     </>
 }

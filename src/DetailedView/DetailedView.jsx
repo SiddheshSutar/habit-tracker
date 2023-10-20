@@ -7,26 +7,31 @@ const DetailedView = () => {
 
     const { habits } = useSelector(habitSelector)
     const dispatch = useDispatch()
-    const [hoveredItemIndex, setHoveredItemIndex]  = useState(null)
+    const [hoveredItemIndex, setHoveredItemIndex] = useState(null)
 
     useEffect(() => {
     }, [])
-    
+
     const handleToggleButtonHover = hoveredIndex => {
         setHoveredItemIndex(hoveredIndex)
     }
 
     return <div className={styles['container']}>
-
-        <ul>
-            {
-                habits.length > 0 &&
-                <>
-                    <div>
-                        <h2>
-                            Your habits
-                        </h2>
-                    </div>
+        {
+            habits.length === 0 &&
+            <div className={styles['no-habits']}>
+                No Habits found. Start creating !
+            </div>
+        }
+        {
+            habits.length > 0 &&
+            <>
+                <div>
+                    <h2>
+                        Your habits
+                    </h2>
+                </div>
+                <ul>
                     {
                         habits.map((item, index) => (
                             <li key={index}>
@@ -41,8 +46,8 @@ const DetailedView = () => {
                                     <div className={`${styles['item-col']} ${styles['right-col']}`}>
                                         <div className={`${styles['icon']} ${styles['toggle-icon']}`}
                                             title={item.completed ? 'Mark as incomplete' : 'Mark as completed'}
-                                            onMouseOver={e => {handleToggleButtonHover(index)}}
-                                            onMouseOut={e => {handleToggleButtonHover(null)}}
+                                            onMouseOver={e => { handleToggleButtonHover(index) }}
+                                            onMouseOut={e => { handleToggleButtonHover(null) }}
                                             onClick={e => {
                                                 dispatch(updateToDoAsync({
                                                     ...item,
@@ -51,11 +56,10 @@ const DetailedView = () => {
                                             }}
                                         >
                                             <div className={`${styles['toggle-text']}`}>
-                                                {`${
-                                                    hoveredItemIndex === index ?
-                                                    item.completed ? 'Mark as incomplete' : 'Mark as completed' :
-                                                    'Toggle'
-                                                }`}
+                                                {`${hoveredItemIndex === index ?
+                                                        item.completed ? 'Mark as incomplete' : 'Mark as completed' :
+                                                        'Toggle'
+                                                    }`}
                                             </div>
                                         </div>
                                         <div className={`${styles['icon']} ${styles['remove-icon']}`}
@@ -69,9 +73,9 @@ const DetailedView = () => {
                             </li>
                         ))
                     }
-                </>
-            }
-        </ul>
+                </ul>
+            </>
+        }
     </div>;
 }
 

@@ -80,12 +80,6 @@ const Navbar = () => {
                     Add Habit
                 </Button> */}
             </Box>
-            <CustomTabPanel value={value} index={0}>
-                {/* <DetailsContent /> */}
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
-                Item Two
-            </CustomTabPanel>
             <CollapseExpand
                 title={'+ Add Habit'}
                 open={sectionOpen}
@@ -93,6 +87,13 @@ const Navbar = () => {
             >
                 <DetailsContent />
             </CollapseExpand>
+            
+            <CustomTabPanel value={value} index={0}>
+                <DetailsContent />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={1}>
+                Item Two
+            </CustomTabPanel>
         </Box>
     );
 }
