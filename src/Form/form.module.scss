@@ -1,11 +1,12 @@
 .container {
-    width: 100%;
+    width: 85%;
+    position: relative;
+    left: 12.5%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
     input {
-        border: 0;
-        border-bottom: 1px solid grey;
+        border: 1px solid var(--main-dark);
         padding: 10px;
         line-height: 1;
         font-size: 1.2rem;
@@ -15,12 +16,12 @@
         color: var(--main-blue-dark);
 
         &::placeholder {
-            color: var(--main-blue);
+            color: var(--grey-main);
         }
 
         &:focus {
             outline: none;
-            border-bottom-color: var(--main-blue-dark);
+            border-bottom-color: var(--grey-main);
             border-bottom-width: 2px;
         }
     }
@@ -39,8 +40,8 @@
             cursor: pointer;
 
             &.add {
-                background-color: var(--main-blue-dark);
-                border-color: var(--main-blue-dark);
+                background-color: var(--main-dark);
+                border-color: var(--main-dark);
                 color: #fff;
             }
             &.clear {
@@ -51,6 +52,7 @@
                 opacity: 0;
                 transition: all 0.3s linear;
                 left: 100%;
+                line-height: 1.4;
                 overflow: hidden;
 
                 > * {

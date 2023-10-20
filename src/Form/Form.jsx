@@ -1,4 +1,5 @@
-import { addHabit, habitSelector, handleTextChange } from '../reduxSlices/habitSlice'
+import { setStatus } from '../reduxSlices/alertSlice'
+import { addHabit, habitSelector, handleTextChange, toggleSection } from '../reduxSlices/habitSlice'
 import styles from './form.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -12,7 +13,8 @@ const Form = () => {
 
         if (e.key === 'Enter') {
             dispatch(addHabit())
-
+            dispatch(setStatus({addHabitStatus: 'completed'}))
+            dispatch(toggleSection(false))
         }
     }
 

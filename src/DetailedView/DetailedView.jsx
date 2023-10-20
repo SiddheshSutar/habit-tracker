@@ -43,14 +43,18 @@ const DetailedView = () => {
                                             // textDecoration: item.completed ? 'line-through' : 'none'
                                         }}
                                     >
-                                        {item.title}
+                                        {
+                                            item.title.length > 28 ?
+                                            `${item.title.substring(0,28)}...` :
+                                            item.title
+                                        }
                                     </h2>
-                                    <div className={`${styles['counts']}`}
-                                    >
-                                        {`${item.days.length
-                                            } / 7 days completed`}
-                                    </div>
                                     <div className={`${styles['item-col']} ${styles['right-col']}`}>
+                                        <div className={`${styles['counts']}`}
+                                        >
+                                            {`${item.days.length
+                                                } / 7 days completed`}
+                                        </div>
                                         {
                                             daysShortTexts.map((dayText, dayIndex) => (
                                                 <Tooltip arrow key={dayIndex} title={

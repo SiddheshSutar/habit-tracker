@@ -10,21 +10,21 @@ import { memo, useRef } from "react";
 
 const Notifications = () => {
 
-    const { fetchToDosStatus } = useSelector(alertSelector)
+    const { addHabitStatus } = useSelector(alertSelector)
 
     const toastId = useRef(null);
     const dispatch = useDispatch();
 
-    if (fetchToDosStatus === 'loading' && toastId.current !== 'fetchToDosStatus:loading') {
+    if (addHabitStatus === 'loading' && toastId.current !== 'addHabitStatus:loading') {
         toast.loading('Fetching todos', { autoClose: toastTimeout })
-        toastId.current = 'fetchToDosStatus:loading'
+        toastId.current = 'addHabitStatus:loading'
     }
-    if (fetchToDosStatus === 'completed') {
+    if (addHabitStatus === 'completed') {
         toast.dismiss();
         toastId.current = null
-        toastId.current = toast.success('Fetched todos')
+        toastId.current = toast.success('Added habit ')
         setTimeout(() => {
-            dispatch(reset('fetchToDosStatus'))
+            dispatch(reset('addHabitStatus'))
         }, toastTimeout);
     }
     return (

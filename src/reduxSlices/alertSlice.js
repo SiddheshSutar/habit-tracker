@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const INITIAL_STATE = {
     fetchToDosStatus: null,
-    addToDoStatus: null,
+    addHabitStatus: null,
     updateToDoStatus: null,
     deleteToDoStatus: null,
 };
@@ -14,6 +14,9 @@ export const alertSlice = createSlice({
     reducers: {
         reset: (state, action) => {
             state[action.payload] = null
+        },
+        setStatus: (state, action) => {
+            state[Object.keys(action.payload)[0]] = Object.values(action.payload)[0]
         }
     },
     // extraReducers: (builder) => {
@@ -29,6 +32,6 @@ export const alertSlice = createSlice({
 
 export const alertReducer = alertSlice.reducer
 
-export const {reset} = alertSlice.actions
+export const {reset, setStatus} = alertSlice.actions
 
 export const alertSelector = state => state.alertReducer
