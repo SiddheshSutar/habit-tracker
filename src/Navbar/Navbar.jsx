@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, toggleSection } from '../reduxSlices/habitSlice';
 import { CollapseExpand } from '../CollapseExpand/CollapseExpand';
 import Form from '../Form/Form';
+import DetailedView from '../DetailedView/DetailedView';
+import WeekView from '../WeekView/WeekView';
 // import CustomModal from '../DetailedView/CustomModal';
 
 function CustomTabPanel(props) {
@@ -90,12 +92,11 @@ const Navbar = () => {
             >
                 <Form />
             </CollapseExpand>
-            
             <CustomTabPanel value={value} index={0}>
-                <DetailsContent />
+                <DetailedView />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                Item Two
+                <WeekView />
             </CustomTabPanel>
         </Box>
     );

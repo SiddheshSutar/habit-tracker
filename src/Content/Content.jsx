@@ -3,14 +3,6 @@ import Form from '../Form/Form';
 import Navbar from '../Navbar/Navbar';
 import styles from './content.module.scss'
 
-
-export const DetailsContent = () => {
-    return <>
-        {/* <Form /> */}
-        <DetailedView />
-    </>
-}
-
 const Content = () => {
     return (
         <div className={`content ${styles['content']}`}>
