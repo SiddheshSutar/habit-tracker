@@ -1,18 +1,36 @@
 .container {
     width: 100%;
     // margin-top: 3rem;
-    
-    .no-habits {
+
+    .rounded-container {
         padding: 20px;
+        background: white;
+        border-radius: 20px;
+        border: 2px solid orange;
+
     }
 
-    h2 {
+    .no-habits {
+        display: grid;
+        place-items: center;
+        height: 10ch;
+        letter-spacing: 4px;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+
+    h2.title {
         margin-bottom: 1rem;
+        padding: 10px;
+        padding-left: 20px;
     }
 
     li {
         list-style-type: none;
-        background: linear-gradient(82deg, rgba(255, 245, 245, 0) 0%, rgba(246, 205, 129, 0.947) 100%);
+
+        &.li-tag {
+            padding: 10px 20px;
+        }
 
         &:not(:last-of-type) {
             margin-bottom: 5px;
@@ -24,13 +42,11 @@
             align-items: center;
             gap: 2rem;
 
-            .title {
+            h2 {
                 max-width: 60ch;
                 white-space: pre-wrap;
-                font-style: italic;
-                font-family: serif;
-                font-size: 1.5rem;
-                letter-spacing: 1px;
+                // font-size: 1.5rem;
+                letter-spacing: 2px;
             }
 
             .right-col {
@@ -56,7 +72,7 @@
 
                     &:hover {
                         box-shadow: inset 0 0 2px black, 0 0 2px black;
-                       
+
                         .toggle-text {
                             animation: collapse-expand 300ms both;
                             animation-iteration-count: 1;
@@ -65,7 +81,7 @@
                         }
                     }
                 }
-                
+
                 @keyframes collapse-expand {
                     0% {
                         transform: scale(0);
@@ -73,6 +89,7 @@
                         right: 0;
                         top: 0;
                     }
+
                     100% {
                         transform: scale(1);
                         right: auto;
@@ -84,7 +101,7 @@
                     padding-right: 20px;
                     font-size: 3rem;
                     line-height: 1;
-                    
+
                     .symbol {
                         transform: rotate(45deg);
                     }

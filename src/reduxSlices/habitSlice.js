@@ -2,7 +2,16 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   text: '',
-  habits: [],
+  habits: [
+    {
+      id: 'Fri Oct 20 2023 17:31:22 GMT+0530 (India Standard Time)',
+      title: 'Workout',
+      days: [
+        'Thu Oct 19 2023 17:31:22 GMT+0530 (India Standard Time)',
+        'Fri Oct 20 2023 17:31:22 GMT+0530 (India Standard Time)'
+      ]
+    }
+  ],
   sectionOpen: false
 }
 

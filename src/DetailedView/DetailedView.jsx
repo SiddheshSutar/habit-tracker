@@ -19,7 +19,7 @@ const DetailedView = () => {
     return <div className={styles['container']}>
         {
             habits.length === 0 &&
-            <div className={styles['no-habits']}>
+            <div className={`${styles['no-habits']} ${styles['rounded-container']}`}>
                 No Habits found. Start creating !
             </div>
         }
@@ -27,24 +27,24 @@ const DetailedView = () => {
             habits.length > 0 &&
             <>
                 <div>
-                    <h2>
+                    <h2 className={`${styles['title']} ${styles['']}`}>
                         Your habits
                     </h2>
                 </div>
                 <ul>
                     {
                         habits.map((item, index) => (
-                            <li key={index}>
+                            <li key={index} className={`${styles['li-tag']} ${styles['rounded-container']}`}>
                                 <div className={styles['item-row']}>
-                                    <div className={`${styles['item-col']} ${styles['title']}`}
+                                    <h2 className={`${styles['item-col']}`}
                                         style={{
                                             // textDecoration: item.completed ? 'line-through' : 'none'
                                         }}
                                     >
                                         {item.title}
-                                    </div>
+                                    </h2>
                                     <div className={`${styles['item-col']} ${styles['right-col']}`}>
-                                        <div className={`${styles['icon']} ${styles['toggle-icon']}`}
+                                        {/* <div className={`${styles['icon']} ${styles['toggle-icon']}`}
                                             title={item.completed ? 'Mark as incomplete' : 'Mark as completed'}
                                             onMouseOver={e => { handleToggleButtonHover(index) }}
                                             onMouseOut={e => { handleToggleButtonHover(null) }}
@@ -61,7 +61,7 @@ const DetailedView = () => {
                                                         'Toggle'
                                                     }`}
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className={`${styles['icon']} ${styles['remove-icon']}`}
                                             title="Remove to do"
                                             onClick={e => dispatch(removeHabit(item))}
