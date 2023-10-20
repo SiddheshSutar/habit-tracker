@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './detailedView.module.scss'
 import { useEffect, useState } from 'react';
 import { habitSelector, removeHabit } from '../reduxSlices/habitSlice';
+import { getActivityStatus, daysShortTexts } from '../constants';
 
 const DetailedView = () => {
 
@@ -44,6 +45,17 @@ const DetailedView = () => {
                                         {item.title}
                                     </h2>
                                     <div className={`${styles['item-col']} ${styles['right-col']}`}>
+                                        {
+                                            daysShortTexts.map((dayText, dayIndex) => (
+                                                <div key={dayIndex} className={`${
+                                                    styles['week-pill']
+                                                } ${
+                                                    styles[`week-pill${getActivityStatus(item, dayIndex)}`]
+                                                }`}>
+                                                    {dayText}
+                                                </div>
+                                            ))
+                                        }
                                         {/* <div className={`${styles['icon']} ${styles['toggle-icon']}`}
                                             title={item.completed ? 'Mark as incomplete' : 'Mark as completed'}
                                             onMouseOver={e => { handleToggleButtonHover(index) }}

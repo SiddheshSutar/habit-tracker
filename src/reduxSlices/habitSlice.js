@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { STATUS_COMPLETED, STATUS_PARTIAL } from '../constants'
 
 const initialState = {
   text: '',
@@ -7,8 +8,14 @@ const initialState = {
       id: 'Fri Oct 20 2023 17:31:22 GMT+0530 (India Standard Time)',
       title: 'Workout',
       days: [
-        'Thu Oct 19 2023 17:31:22 GMT+0530 (India Standard Time)',
-        'Fri Oct 20 2023 17:31:22 GMT+0530 (India Standard Time)'
+        {
+          day: 3,
+          status: STATUS_PARTIAL
+        },
+        {
+          day: 4,
+          status: STATUS_COMPLETED
+        }
       ]
     }
   ],

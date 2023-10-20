@@ -11,3 +11,15 @@ export const toastifySettings = {
     progress: undefined,
     theme: "light",
 }
+
+export const daysShortTexts = [
+    'Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'
+]
+
+export const STATUS_PARTIAL = 'Partial'
+export const STATUS_COMPLETED = 'Completed'
+export const STATUS_None = 'None'
+
+export const getActivityStatus = (habit, dayNumber) => {
+    return habit.days.some(item => item.day === dayNumber) ? '-marked' : ''
+}

@@ -60,6 +60,13 @@
                     transition: all 0.3s linear;
                     cursor: pointer;
                 }
+                
+                .week-pill {
+                    background-color: greenyellow;
+                }
+                .week-pill-marked {
+                    background-color: red;
+                }
 
                 .toggle-icon {
                     margin: 10px;
