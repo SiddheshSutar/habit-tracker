@@ -62,10 +62,15 @@
                 }
                 
                 .week-pill {
-                    background-color: greenyellow;
+                    background-color: grey;
+                    padding: 2px 5px;
+                    border-radius: 11px;
                 }
-                .week-pill-marked {
-                    background-color: red;
+                .week-pill-completed {
+                    background-color: green;
+                }
+                .week-pill-partial {
+                    background-color: orangered;
                 }
 
                 .toggle-icon {

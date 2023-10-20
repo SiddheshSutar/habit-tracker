@@ -50,7 +50,7 @@ const DetailedView = () => {
                                                 <div key={dayIndex} className={`${
                                                     styles['week-pill']
                                                 } ${
-                                                    styles[`week-pill${getActivityStatus(item, dayIndex)}`]
+                                                    styles[`week-pill-${getActivityStatus(item, dayText, dayIndex)}`]
                                                 }`}>
                                                     {dayText}
                                                 </div>
