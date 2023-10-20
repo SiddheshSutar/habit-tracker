@@ -1,4 +1,4 @@
-import List from '../DetailedView/List/List';
+import DetailedView from '../DetailedView/DetailedView';
 import Form from '../Form/Form';
 import Navbar from '../Navbar/Navbar';
 import styles from './content.module.scss'
@@ -7,7 +7,7 @@ import styles from './content.module.scss'
 export const DetailsContent = () => {
     return <>
         <Form />
-        <List />
+        <DetailedView />
     </>
 }
 

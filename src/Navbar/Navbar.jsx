@@ -60,14 +60,13 @@ const Navbar = () => {
     return (
         <Box
             className={styles['container']}
-        // sx={{
-        //     '.MuiContainer-root': {
-        //         paddingInline: 0
-        //     }
-        // }}
         >
             <Box className={styles['nav-strip']}>
-                <Tabbs className={styles['tabs-wrapper']} value={value} onChange={handleChange} aria-label="basic tabs example">
+                <Tabbs
+                    className={styles['tabs-wrapper']}
+                    value={value} onChange={handleChange}
+                    aria-label="basic tabs example"
+                >
                     <Tab label="Detailed View" />
                     <Tab label="Week View" />
                 </Tabbs>
@@ -90,7 +89,7 @@ const Navbar = () => {
             <CollapseExpand
                 title={'+ Add Habit'}
                 open={sectionOpen}
-                handleClose={() => dispatch(toggleSection(false))}
+                handleChange={(flag) => dispatch(toggleSection(flag))}
             >
                 <DetailsContent />
             </CollapseExpand>

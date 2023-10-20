@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './list.module.scss'
+import styles from './detailedView.module.scss'
 import { useEffect, useState } from 'react';
-import { habitSelector, removeHabit } from '../../reduxSlices/habitSlice';
+import { habitSelector, removeHabit } from '../reduxSlices/habitSlice';
 
-const List = () => {
+const DetailedView = () => {
 
     const { habits } = useSelector(habitSelector)
     const dispatch = useDispatch()
@@ -75,4 +75,4 @@ const List = () => {
     </div>;
 }
 
-export default List;
+export default DetailedView;
