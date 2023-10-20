@@ -5,7 +5,8 @@ import { DetailsContent } from '../Content/Content';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, toggleModal } from '../reduxSlices/habitSlice';
-import CustomModal from '../DetailedView/CustomModal';
+import { DialogBox } from '../Dialog/DialogBox';
+// import CustomModal from '../DetailedView/CustomModal';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -78,12 +79,12 @@ const Navbar = () => {
             <CustomTabPanel value={value} index={1}>
                 Item Two
             </CustomTabPanel>
-            <CustomModal
+            <DialogBox
                 open={modalOpen}
                 handleClose={() => dispatch(toggleModal(false))}
             >
                 <div>Hell</div>
-            </CustomModal>
+            </DialogBox>
         </Container>
     );
 }

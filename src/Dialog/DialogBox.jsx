@@ -1,7 +1,7 @@
 import React from 'react'
 import { Dialog } from "@mui/material";
 
-export const CustomModal = ({
+export const DialogBox = ({
     open,
     handleClose,
     children
