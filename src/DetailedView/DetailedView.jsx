@@ -3,6 +3,7 @@ import styles from './detailedView.module.scss'
 import { useEffect, useState } from 'react';
 import { habitSelector, removeHabit } from '../reduxSlices/habitSlice';
 import { getActivityStatus, daysShortTexts } from '../constants';
+import { Tooltip } from '@mui/material';
 
 const DetailedView = () => {
 
@@ -47,13 +48,20 @@ const DetailedView = () => {
                                     <div className={`${styles['item-col']} ${styles['right-col']}`}>
                                         {
                                             daysShortTexts.map((dayText, dayIndex) => (
-                                                <div key={dayIndex} className={`${
-                                                    styles['week-pill']
-                                                } ${
-                                                    styles[`week-pill-${getActivityStatus(item, dayText, dayIndex)}`]
-                                                }`}>
-                                                    {dayText}
-                                                </div>
+                                                <Tooltip arrow key={dayIndex} title={
+                                                    getActivityStatus(item, dayText, dayIndex) === 'completed' ?
+                                                        'Task Completed' :
+                                                        getActivityStatus(item, dayText, dayIndex) === 'partial' ?
+                                                            'Partially Completed' :
+                                                            ''
+                                                }>
+                                                    <div className={`${styles['week-pill']
+                                                        } ${styles[`week-pill-${getActivityStatus(item, dayText, dayIndex)}`]
+                                                        }`}
+                                                    >
+                                                        {dayText}
+                                                    </div>
+                                                </Tooltip>
                                             ))
                                         }
                                         {/* <div className={`${styles['icon']} ${styles['toggle-icon']}`}
