@@ -6,6 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, toggleSection } from '../reduxSlices/habitSlice';
 import { CollapseExpand } from '../CollapseExpand/CollapseExpand';
+import Form from '../Form/Form';
 // import CustomModal from '../DetailedView/CustomModal';
 
 function CustomTabPanel(props) {
@@ -21,8 +22,10 @@ function CustomTabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                <Box sx={{ p: 3 }}
+                >
+                    <Typography
+                    >{children}</Typography>
                 </Box>
             )}
         </div>
@@ -81,11 +84,11 @@ const Navbar = () => {
                 </Button> */}
             </Box>
             <CollapseExpand
-                title={'+ Add Habit'}
+                title={'Add Habit'}
                 open={sectionOpen}
                 handleChange={(flag) => dispatch(toggleSection(flag))}
             >
-                <DetailsContent />
+                <Form />
             </CollapseExpand>
             
             <CustomTabPanel value={value} index={0}>

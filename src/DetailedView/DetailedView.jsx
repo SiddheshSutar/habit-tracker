@@ -45,6 +45,11 @@ const DetailedView = () => {
                                     >
                                         {item.title}
                                     </h2>
+                                    <div className={`${styles['counts']}`}
+                                    >
+                                        {`${item.days.length
+                                            } / 7 days completed`}
+                                    </div>
                                     <div className={`${styles['item-col']} ${styles['right-col']}`}>
                                         {
                                             daysShortTexts.map((dayText, dayIndex) => (

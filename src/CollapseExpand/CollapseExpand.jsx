@@ -32,6 +32,16 @@ export const CollapseExpand = ({
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    sx={{
+                        '& .MuiTypography-root' : {
+                            fontSize: '1.1rem',
+                            fontWeight: 'bold',
+                            letterSpacing: '1px',
+                        },
+                        '& .MuiSvgIcon-root' : {
+                            color: 'black'
+                        }
+                    }}
                 >
                     <Typography>
                         {title}
