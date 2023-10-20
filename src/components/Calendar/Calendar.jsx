@@ -1,6 +1,7 @@
 import Calendar from 'react-calendar';
 import styles from './calendar.module.scss';
 import 'react-calendar/dist/Calendar.css';
+import './react-calendar-override.scss';
 import { useState } from 'react';
 
 const CalendarComponent = () => {
