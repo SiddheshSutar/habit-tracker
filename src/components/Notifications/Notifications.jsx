@@ -3,7 +3,7 @@
  */
 import { alertSelector, reset } from "../../reduxSlices/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { toastTimeout } from "../../constants";
+import { toastTimeout } from "../../helpers";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { memo, useRef } from "react";

@@ -2,14 +2,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './detailedView.module.scss'
 import { useEffect, useState } from 'react';
 import { habitSelector, removeHabit } from '../reduxSlices/habitSlice';
-import { getActivityStatus, daysShortTexts } from '../constants';
+import { getActivityStatus, daysShortTexts, generateDayArrAsPerCurrentDay } from '../helpers';
 import { Tooltip } from '@mui/material';
 
 const DetailedView = () => {
 
-    const { habits } = useSelector(habitSelector)
+    const { habits, selectedDay: selectedDayString, } = useSelector(habitSelector)
     const dispatch = useDispatch()
     const [hoveredItemIndex, setHoveredItemIndex] = useState(null)
+
+    let selectedDay = ''
+    if(selectedDayString) selectedDay = new Date(selectedDayString)
 
     useEffect(() => {
     }, [])
@@ -56,7 +59,7 @@ const DetailedView = () => {
                                                 } / 7 days completed`}
                                         </div>
                                         {
-                                            daysShortTexts.map((dayText, dayIndex) => (
+                                            generateDayArrAsPerCurrentDay(daysShortTexts).map((dayText, dayIndex) => (
                                                 <Tooltip arrow key={dayIndex} title={
                                                     getActivityStatus(item, dayText, dayIndex) === 'completed' ?
                                                         'Task Completed' :
@@ -73,24 +76,6 @@ const DetailedView = () => {
                                                 </Tooltip>
                                             ))
                                         }
-                                        {/* <div className={`${styles['icon']} ${styles['toggle-icon']}`}
-                                            title={item.completed ? 'Mark as incomplete' : 'Mark as completed'}
-                                            onMouseOver={e => { handleToggleButtonHover(index) }}
-                                            onMouseOut={e => { handleToggleButtonHover(null) }}
-                                            onClick={e => {
-                                                dispatch(updateToDoAsync({
-                                                    ...item,
-                                                    completed: !item.completed
-                                                }))
-                                            }}
-                                        >
-                                            <div className={`${styles['toggle-text']}`}>
-                                                {`${hoveredItemIndex === index ?
-                                                        item.completed ? 'Mark as incomplete' : 'Mark as completed' :
-                                                        'Toggle'
-                                                    }`}
-                                            </div>
-                                        </div> */}
                                         <div className={`${styles['icon']} ${styles['remove-icon']}`}
                                             title="Remove to do"
                                             onClick={e => dispatch(removeHabit(item))}

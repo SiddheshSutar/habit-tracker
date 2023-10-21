@@ -9,9 +9,12 @@ import { habitSelector, setHabitState } from '../../reduxSlices/habitSlice';
 
 const CalendarComponent = () => {
     const [value, onChange] = useState(new Date());
-    const { selectedDay } = useSelector(habitSelector)
+    const { selectedDay: selectedDayString } = useSelector(habitSelector)
 
     const dispatch = useDispatch()
+
+    let selectedDay = ''
+    if(selectedDayString) selectedDay = new Date(selectedDayString)
 
     return (
         <div className={`${styles['container']}`}>
@@ -61,7 +64,7 @@ const CalendarComponent = () => {
                 }}
                 onClickDay={date => {
                     dispatch(setHabitState({
-                        selectedDay: date
+                        selectedDay: date.toString()
                     }))
                 }}
             />
