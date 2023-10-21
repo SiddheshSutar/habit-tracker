@@ -1,8 +1,8 @@
 import "./styles.css";
 import { Provider } from 'react-redux'
 import { store } from "./store";
-import Notifications from "./Notifications/Notifications";
 import Content from "./Content/Content";
+import Notifications from "./components/Notifications/Notifications";
 
 export default function App() {
 

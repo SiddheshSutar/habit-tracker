@@ -5,7 +5,7 @@ import { DetailsContent } from '../Content/Content';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, toggleSection } from '../reduxSlices/habitSlice';
-import { CollapseExpand } from '../CollapseExpand/CollapseExpand';
+import { CollapseExpand } from '../components/CollapseExpand/CollapseExpand';
 import Form from '../Form/Form';
 import DetailedView from '../DetailedView/DetailedView';
 import WeekView from '../WeekView/WeekView';

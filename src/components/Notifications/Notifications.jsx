@@ -1,14 +1,14 @@
 /**
  * Component: To display all states of api lifecycles OR any popups needed inbetween
  */
-import { alertSelector, reset } from "../reduxSlices/alertSlice";
+import { alertSelector, reset } from "../../reduxSlices/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { toastTimeout } from "../constants";
+import { toastTimeout } from "../../constants";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { memo, useRef } from "react";
 
-const Notifications = () => {
+const Notifications_ = () => {
 
     const { addHabitStatus } = useSelector(alertSelector)
 
@@ -45,4 +45,6 @@ const Notifications = () => {
     );
 }
 
-export default memo(Notifications);
+const Not = memo(Notifications_)
+
+export default Not;
