@@ -9,16 +9,10 @@ const WeekView = () => {
     const { selectedDay, habits } = useSelector(habitSelector)
     const dispatch = useDispatch()
 
-    let matchedHabitOnSelectedDay = null
-
-    selectedDay && habits.forEach((item) => {
-        if (item.id === selectedDay.toString()) matchedHabitOnSelectedDay = item
-    })
-
     return (
         <Box className={styles['container']}>
-            <Grid container>
-                <Grid item lg={4}>
+            <Grid container justifyContent={'space-between'} gap={1}>
+                <Grid item lg={4} className={styles['lh-box']}>
                     <Grid container alignItems={'center'} className={styles['title-section']}>
                         <Grid item lg={7}>
                             <h2>Activities per day</h2>
@@ -48,25 +42,22 @@ const WeekView = () => {
                             "Choose one of the highlighted days to view activities"
                         </Box>}
                         {
-                            selectedDay && !matchedHabitOnSelectedDay &&
-                            <>
-                                <Box className={styles['selected-date-info']}>
-                                    No Habit found on selected day
-                                </Box>
-                            </>
-                        }
-                        {
-                            selectedDay && matchedHabitOnSelectedDay &&
+                            selectedDay &&
                             <Box className={styles['selected-date-info']}>
                                 {
-                                    matchedHabitOnSelectedDay.id
+                                    habits.map((habitObj, index) => (
+                                        <Box key={index} className={`${styles['habit-box']} ${styles['rounded-container']}`}>
+                                            {habitObj.title}
+                                        </Box>
+                                    ))
+                                    
                                 }
                             </Box>
                         }
 
                     </Box>
                 </Grid>
-                <Grid item lg={8}>
+                <Grid item lg={8} className={styles['rh-box']}>
                     <CalendarComponent />
                 </Grid>
             </Grid>

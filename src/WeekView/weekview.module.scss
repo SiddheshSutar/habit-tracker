@@ -1,18 +1,24 @@
 .container {
-    
+
+    .lh-box,
+    .rh-box {
+        flex: 0 0 auto;
+    }
+
     .title-section {
         margin-bottom: 2rem;
     }
-    
+
     .on-this-day {
         margin-bottom: 1rem;
         font-size: 1.1rem;
         letter-spacing: 1px;
         font-weight: 500;
     }
+
     .activities-section {
         height: 80%;
-        
+
         .unselected-msg {
             display: grid;
             place-items: center;
@@ -22,5 +28,13 @@
             letter-spacing: 1px;
             text-align: center;
         }
+    }
+
+    .rounded-container {
+        padding: 20px;
+        background: white;
+        border-radius: 20px;
+        border: 2px solid orange;
+
     }
 }
