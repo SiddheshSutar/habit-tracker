@@ -42,7 +42,7 @@ export const getStatusValue = (habitObj, selectedDayString) => {
     if(habitObj.days.find(item => item.day === selectedDayString)) {
         return habitObj.days.find(item => item.day === selectedDayString).status
     }
-    else return STATUS_NOT_DONE
+    else return STATUS_NONE
 }
 
 export const generateDayArrAsPerCurrentDay = (daysArr) => {

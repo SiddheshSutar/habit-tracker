@@ -56,7 +56,7 @@ const DetailedView = () => {
                                         <div className={`${styles['counts']}`}
                                         >
                                             {`${item.days.length
-                                                } / 7 days completed`}
+                                                } / 7 days logged`}
                                         </div>
                                         {
                                             generateDayArrAsPerCurrentDay(daysShortTexts).map((dayText, dayIndex) => (
@@ -64,7 +64,7 @@ const DetailedView = () => {
                                                     getActivityStatus(item, dayText, dayIndex) === 'completed' ?
                                                         'Task Completed' :
                                                         getActivityStatus(item, dayText, dayIndex) === 'partial' ?
-                                                            'Partially Completed' :
+                                                            'Task Not Completed' :
                                                             ''
                                                 }>
                                                     <div className={`${styles['week-pill']
