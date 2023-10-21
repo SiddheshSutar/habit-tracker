@@ -1,8 +1,22 @@
 .container {
 
+    .lh-rh-flex {
+        justify-content: flex-start;
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
+
     .lh-box,
     .rh-box {
         flex: 0 0 auto;
+    }
+
+    .lh-box {
+        display: flex;
+        flex-direction: column;
+        padding-inline: 30px;
+        margin-inline: auto;
+        width: 100%;
     }
 
     .title-section {
@@ -49,10 +63,29 @@
             font-weight: bold;
             white-space: break-spaces;
             display: flex;
+            justify-content: space-between;
             gap: 10px;
+
+            .sd-title-col {
+                display: flex;
+                
+            }
         }
 
         .sd-status {
+            display: flex;
+            align-items: center;
+
+            .sd-status-button {
+                padding-block: 8px;
+            }
+
+            .sd-status-title {
+                color: var(--main-dark);
+                font-size: 1.2rem;
+                font-weight: bold;
+                white-space: break-spaces;
+            }
 
             .sd-status-done {
                 background-color: rgb(22, 167, 22);

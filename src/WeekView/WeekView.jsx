@@ -12,16 +12,16 @@ const WeekView = () => {
 
 
     let selectedDay = ''
-    if(selectedDayString) selectedDay = new Date(selectedDayString)
+    if (selectedDayString) selectedDay = new Date(selectedDayString)
 
-    
+
     const handleChangeStatus = (event, value, habitObj) => {
 
         let daysArrUpdated = [...habitObj.days]
 
         let foundEntry = false
         daysArrUpdated = daysArrUpdated.map(item => {
-            if(item.day === selectedDayString) {
+            if (item.day === selectedDayString) {
                 return {
                     ...item,
                     status: value
@@ -29,7 +29,7 @@ const WeekView = () => {
             } else return item
         })
 
-        if(!foundEntry) {
+        if (!foundEntry) {
             daysArrUpdated.push({
                 day: selectedDayString,
                 status: value
@@ -37,7 +37,7 @@ const WeekView = () => {
         }
 
         let newhabitsArr = [...habits].map(item => {
-            if(item.id === habitObj.id) {
+            if (item.id === habitObj.id) {
                 return {
                     ...habitObj,
                     days: daysArrUpdated
@@ -49,15 +49,16 @@ const WeekView = () => {
             habits: newhabitsArr
         }))
 
-        
+
     }
 
     return (
         <Box className={styles['container']}>
-            <Grid container justifyContent={'space-between'} gap={1} style={{
-                flexWrap: 'nowrap'
-            }}>
-                <Grid item lg={4} xl={3} className={styles['lh-box']}>
+            <Grid className={styles['lh-rh-flex']} container>
+                <Grid item lg={6} xl={6} className={styles['rh-box']}>
+                    <CalendarComponent />
+                </Grid>
+                <Grid item lg={6} xl={6} className={styles['lh-box']}>
                     <Grid container alignItems={'center'} className={styles['title-section']}>
                         <Grid item lg={7}>
                             <h2>Activities per day</h2>
@@ -92,35 +93,45 @@ const WeekView = () => {
                                 {
                                     habits.map((habitObj, index) => (
                                         <Box key={index} className={`${styles['habit-box']} ${styles['rounded-container']}`}>
-                                            <Box className={styles['sd-title']}>
-                                                <Box className={styles['sd-title-task']}>Task:</Box>
-                                                <Box className={styles['sd-title-text']}>{
-                                                    habitObj.title.length >=30 ? 
-                                                    habitObj.title.substring(0,30) + '...' :
-                                                    habitObj.title
-                                                }</Box>
-                                            </Box>
+                                            {/* <Box className={styles['sd-title']}> */}
+                                            <Grid container className={styles['sd-title']}>
+                                                <Grid item className={styles['sd-title-col']}>
+                                                    <Box className={styles['sd-title-task']}>Task:&nbsp;</Box>
+                                                    <Box className={styles['sd-title-text']}>{
+                                                        habitObj.title.length >= 30 ?
+                                                            habitObj.title.substring(0, 30) + '...' :
+                                                            habitObj.title
+                                                    }</Box>
+                                                </Grid>
+                                                <Grid item className={styles['sd-title-col']}>
+                                                    <Box className={styles['sd-title-task']}>Weekly count:&nbsp;</Box>
+                                                    <Box className={styles['sd-title-text']}>{
+                                                        `${habitObj.days.length} / 7 days completed`
+                                                    }</Box>
+                                                </Grid>
+                                            </Grid>
+                                            {/* </Box> */}
                                             <Box className={styles['sd-status']}>
-                                                <ToggleButtonGroup
-                                                    color="primary"
-                                                    value={getStatusValue(habitObj, selectedDayString)}
-                                                    exclusive
-                                                    onChange={(e, v) =>  handleChangeStatus(e, v, habitObj)}
-                                                    aria-label="status"
-                                                >
-                                                    <ToggleButton className={`${styles['sd-status-done']} ${
-                                                        getStatusValue(habitObj, selectedDayString) === STATUS_DONE ?
-                                                        styles['sd-current-status'] : ''
-                                                    }`} value={STATUS_DONE}>done</ToggleButton>
-                                                    <ToggleButton className={`${styles['sd-status-not-done']} ${
-                                                        getStatusValue(habitObj, selectedDayString) === STATUS_NOT_DONE ?
-                                                        styles['sd-current-status'] : ''
-                                                    }`} value={STATUS_NOT_DONE}>Not Done</ToggleButton>
-                                                    <ToggleButton className={`${styles['sd-status-none']} ${
-                                                        getStatusValue(habitObj, selectedDayString) === STATUS_NONE ?
-                                                        styles['sd-current-status'] : ''
-                                                    }`} value={STATUS_NONE}>none</ToggleButton>
-                                                </ToggleButtonGroup>
+                                                <Box className={styles['sd-status-title']}>Status:&nbsp;</Box>
+                                                <Box>
+                                                    <ToggleButtonGroup
+                                                        color="primary"
+                                                        value={getStatusValue(habitObj, selectedDayString)}
+                                                        exclusive
+                                                        onChange={(e, v) => handleChangeStatus(e, v, habitObj)}
+                                                        aria-label="status"
+                                                    >
+                                                        <ToggleButton className={`${styles['sd-status-button']} ${styles['sd-status-done']} ${getStatusValue(habitObj, selectedDayString) === STATUS_DONE ?
+                                                            styles['sd-current-status'] : ''
+                                                            }`} value={STATUS_DONE}>done</ToggleButton>
+                                                        <ToggleButton className={`${styles['sd-status-button']} ${styles['sd-status-not-done']} ${getStatusValue(habitObj, selectedDayString) === STATUS_NOT_DONE ?
+                                                            styles['sd-current-status'] : ''
+                                                            }`} value={STATUS_NOT_DONE}>Not Done</ToggleButton>
+                                                        <ToggleButton className={`${styles['sd-status-button']} ${styles['sd-status-none']} ${getStatusValue(habitObj, selectedDayString) === STATUS_NONE ?
+                                                            styles['sd-current-status'] : ''
+                                                            }`} value={STATUS_NONE}>none</ToggleButton>
+                                                    </ToggleButtonGroup>
+                                                </Box>
                                             </Box>
                                         </Box>
                                     ))
@@ -128,11 +139,7 @@ const WeekView = () => {
                                 }
                             </Box>
                         }
-
                     </Box>
-                </Grid>
-                <Grid item lg={8} xl={7} className={styles['rh-box']}>
-                    <CalendarComponent />
                 </Grid>
             </Grid>
         </Box>
