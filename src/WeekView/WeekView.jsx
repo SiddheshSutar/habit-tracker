@@ -19,7 +19,30 @@ const WeekView = () => {
         <Box className={styles['container']}>
             <Grid container>
                 <Grid item lg={4}>
-                    <h2>Activities per day</h2>
+                    <Grid container alignItems={'center'} className={styles['title-section']}>
+                        <Grid item lg={7}>
+                            <h2>Activities per day</h2>
+                        </Grid>
+                        <Grid item lg={5}>
+                            {
+                                selectedDay && <>
+                                    <Button variant='text' type="button" size='sm'
+                                        className={styles['clear-selected-date']}
+                                        onClick={e => {
+                                            dispatch(setHabitState({
+                                                selectedDay: null
+                                            }))
+                                        }}
+                                    >
+                                        Clear Selection
+                                    </Button>
+                                </>
+                            }
+                        </Grid>
+                    </Grid>
+                    {selectedDay && <Box className={styles['on-this-day']}>
+                        On this day of {selectedDay.getDate()}/{selectedDay.getMonth()}/{selectedDay.getFullYear()} : 
+                    </Box>}
                     <Box className={styles['activities-section']}>
                         {!selectedDay && <Box className={styles['unselected-msg']}>
                             "Choose one of the highlighted days to view activities"
@@ -40,19 +63,7 @@ const WeekView = () => {
                                 }
                             </Box>
                         }
-                        {
-                            selectedDay && <>
-                                <Button variant='outlined' type="button" className={styles['clear-selected-date']}
-                                    onClick={e => {
-                                        dispatch(setHabitState({
-                                            selectedDay: null
-                                        }))
-                                    }}
-                                >
-                                    Clear Selection
-                                </Button>
-                            </>
-                        }
+
                     </Box>
                 </Grid>
                 <Grid item lg={8}>
