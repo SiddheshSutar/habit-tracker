@@ -45,6 +45,7 @@ const WeekView = () => {
             } else return item
         })
 
+        /** TO-DO : fix logic: currently it introducs new item while editing status */
         dispatch(setHabitState({
             habits: newhabitsArr
         }))
