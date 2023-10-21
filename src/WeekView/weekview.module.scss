@@ -1,0 +1,15 @@
+.container {
+    .activities-section {
+        height: 80%;
+        
+        .unselected-msg {
+            display: grid;
+            place-items: center;
+            height: 100%;
+            font-style: italic;
+            font-weight: 100;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+    }
+}

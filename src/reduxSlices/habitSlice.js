@@ -5,7 +5,7 @@ const initialState = {
   text: '',
   habits: [
     {
-      id: 'Fri Oct 20 2023 17:31:22 GMT+0530 (India Standard Time)',
+      id: 'Tue Oct 17 2023 00:00:00 GMT+0530 (India Standard Time)',
       title: 'Workout',
       days: [
         {
@@ -19,7 +19,8 @@ const initialState = {
       ]
     }
   ],
-  sectionOpen: false
+  sectionOpen: false,
+  selectedDay: null
 }
 
 
@@ -27,6 +28,9 @@ export const habitSlice = createSlice({
   name: 'habit',
   initialState,
   reducers: {
+    setHabitState: (state, action) => {
+      state[Object.keys(action.payload)[0]] = Object.values(action.payload)[0]
+    },
     handleTextChange: (state, action) => {
       state.text = action.payload
     },
@@ -49,6 +53,6 @@ export const habitSlice = createSlice({
 
 export const habitReducer = habitSlice.reducer
 
-export const { handleTextChange, addHabit, removeHabit, toggleSection } = habitSlice.actions
+export const { handleTextChange, addHabit, removeHabit, toggleSection, setHabitState } = habitSlice.actions
 
 export const habitSelector = state => state.habitReducer

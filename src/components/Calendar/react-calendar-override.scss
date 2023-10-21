@@ -6,4 +6,16 @@
             display: none;
         }
     }
+    
+    .react-calendar__tile:focus {
+        background-color: var(--main-dark);
+    }
+    .react-calendar__tile--active:not(.selected-date) {
+        background-color: #fff;
+        color: initial;
+    }
+    .react-calendar__tile--now.react-calendar__tile--active:not(.selected-date) {
+        background-color: #ffff76;
+        color: initial;
+    }
 }

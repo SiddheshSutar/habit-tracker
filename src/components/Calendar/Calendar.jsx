@@ -4,9 +4,14 @@ import 'react-calendar/dist/Calendar.css';
 import './react-calendar-override.scss';
 import { useState } from 'react';
 import { Tooltip } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { habitSelector, setHabitState } from '../../reduxSlices/habitSlice';
 
 const CalendarComponent = () => {
     const [value, onChange] = useState(new Date());
+    const { selectedDay } = useSelector(habitSelector)
+
+    const dispatch = useDispatch()
 
     return (
         <div className={`${styles['container']}`}>
@@ -16,10 +21,25 @@ const CalendarComponent = () => {
                 defaultValue={null}
 
                 tileClassName={({ activeStartDate, date, view }) => {
+                    let className = ''
+                    
+                    /**Append if selected */
+                    if(selectedDay && (selectedDay.getDate() === date.getDate())) {
+                        className = `${className} selected-date ${styles['selected-date']}`
+                    }
+
+                    /** Append if falls within 7 day limit */
                     const currentDate = (new Date()).getDate()
                     if (date.getDate() > (currentDate - 7) && date.getDate() <= currentDate) {
-                        return ` ${styles['show-marked']}`
-                    } else return ''
+                        className =  `${className} ${styles['show-marked']}`
+                    }
+                    return className
+                }}
+                tileDisabled={({ activeStartDate, date, view }) => {
+                    const currentDate = (new Date()).getDate()
+                    if (date.getDate() > (currentDate - 7) && date.getDate() <= currentDate) {
+                        return false
+                    } else return true
                 }}
                 tileContent={({ activeStartDate, date, view }) => {
 
@@ -39,7 +59,11 @@ const CalendarComponent = () => {
                     } else return <div>{date.getDate()}
                     </div>
                 }}
-                onClickDay={e => console.log('hex: ', e)}
+                onClickDay={date => {
+                    dispatch(setHabitState({
+                        selectedDay: date
+                    }))
+                }}
             />
         </div>
     );

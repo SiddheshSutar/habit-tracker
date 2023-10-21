@@ -1,7 +1,7 @@
 .container {
     .show-marked {
         position: relative;
-        outline: 1px solid var(--main-dark);
+        outline: 1px solid var(--grey-main);
 
         ::before {
             content: '';
@@ -14,6 +14,16 @@
             background-color: rgb(41, 173, 41);
             border-radius: 50%;
             margin: 3px;
+        }
+    }
+    
+    .selected-date {
+        outline: 2px solid var(--main-dark);
+        background-color: var(--main-dark);
+        
+       & :focus {
+            background-color: var(--main-dark);
+            
         }
     }
 }
