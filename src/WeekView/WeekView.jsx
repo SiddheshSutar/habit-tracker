@@ -108,9 +108,18 @@ const WeekView = () => {
                                                     onChange={(e, v) =>  handleChangeStatus(e, v, habitObj)}
                                                     aria-label="status"
                                                 >
-                                                    <ToggleButton value={STATUS_DONE}>done</ToggleButton>
-                                                    <ToggleButton value={STATUS_NOT_DONE}>Not Done</ToggleButton>
-                                                    <ToggleButton value={STATUS_NONE}>none</ToggleButton>
+                                                    <ToggleButton className={`${styles['sd-status-done']} ${
+                                                        getStatusValue(habitObj, selectedDayString) === STATUS_DONE ?
+                                                        styles['sd-current-status'] : ''
+                                                    }`} value={STATUS_DONE}>done</ToggleButton>
+                                                    <ToggleButton className={`${styles['sd-status-not-done']} ${
+                                                        getStatusValue(habitObj, selectedDayString) === STATUS_NOT_DONE ?
+                                                        styles['sd-current-status'] : ''
+                                                    }`} value={STATUS_NOT_DONE}>Not Done</ToggleButton>
+                                                    <ToggleButton className={`${styles['sd-status-none']} ${
+                                                        getStatusValue(habitObj, selectedDayString) === STATUS_NONE ?
+                                                        styles['sd-current-status'] : ''
+                                                    }`} value={STATUS_NONE}>none</ToggleButton>
                                                 </ToggleButtonGroup>
                                             </Box>
                                         </Box>

@@ -51,5 +51,41 @@
             display: flex;
             gap: 10px;
         }
+
+        .sd-status {
+
+            .sd-status-done {
+                background-color: rgb(22, 167, 22);
+                color: #fff;
+            }
+            .sd-status-not-done {
+                background-color: rgb(243, 29, 29);
+                color: #fff;
+            }
+            .sd-status-none {
+                background-color: var(--grey-main);
+                color: #fff;
+            }
+            .sd-current-status {
+                position: relative;
+
+                &::before {
+                    content: '\2713';
+                    position: absolute;
+                    top: -11px;
+                    right: -2px;
+                    background-color: rgb(22, 142, 255);
+                    color: white;
+                    width: 13px;
+                    height: 13px;
+                    z-index: 2;
+                    line-height: 0.8;
+                    padding: 5px;
+                    font-weight: bold;
+                    font-size: 18px;
+                    border-radius: 12px;
+                }
+            }
+        }
     }
 }
