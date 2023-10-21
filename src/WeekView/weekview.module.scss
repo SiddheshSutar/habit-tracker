@@ -30,11 +30,26 @@
         }
     }
 
+    .habit-box {
+        margin-bottom: 10px;
+    }
+
     .rounded-container {
         padding: 20px;
         background: white;
         border-radius: 20px;
         border: 2px solid orange;
 
+        .sd-title-task {
+            color: var(--main-dark);
+        }
+        .sd-title {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            white-space: break-spaces;
+            display: flex;
+            gap: 10px;
+        }
     }
 }

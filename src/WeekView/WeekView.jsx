@@ -93,7 +93,12 @@ const WeekView = () => {
                                     habits.map((habitObj, index) => (
                                         <Box key={index} className={`${styles['habit-box']} ${styles['rounded-container']}`}>
                                             <Box className={styles['sd-title']}>
-                                                {habitObj.title}
+                                                <Box className={styles['sd-title-task']}>Task:</Box>
+                                                <Box className={styles['sd-title-text']}>{
+                                                    habitObj.title.length >=30 ? 
+                                                    habitObj.title.substring(0,30) + '...' :
+                                                    habitObj.title
+                                                }</Box>
                                             </Box>
                                             <Box className={styles['sd-status']}>
                                                 <ToggleButtonGroup
