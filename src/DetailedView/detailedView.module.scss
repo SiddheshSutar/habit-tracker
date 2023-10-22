@@ -20,9 +20,15 @@
     }
 
     h2.title {
-        margin-bottom: 1rem;
         padding: 10px;
         padding-left: 20px;
+    }
+    
+    .title-box {
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     li {

@@ -63,11 +63,17 @@ const WeekView = () => {
                     <CalendarComponent />
                 </Grid>
                 <Grid item lg={6} xl={6} className={styles['lh-box']}>
-                    <Grid container alignItems={'center'} className={styles['title-section']}>
+                    <h2>Activities per day</h2>
+
+                    {/* {selectedDay && <Box className={styles['on-this-day']}>
+                    </Box>} */}
+                    {selectedDay && <Grid container alignItems={'center'} className={styles['title-section']}>
                         <Grid item lg={7}>
-                            <h2>Activities per day</h2>
+                            {/* <h2>Activities per day</h2> */}
+                        On the day of {selectedDay.getDate()}/{selectedDay.getMonth()}/{selectedDay.getFullYear()} :
+
                         </Grid>
-                        <Grid item lg={5}>
+                        <Grid item lg={5} className={styles['btn-col']}>
                             {
                                 selectedDay && <>
                                     <Button variant='text' type="button" size='sm'
@@ -83,10 +89,7 @@ const WeekView = () => {
                                 </>
                             }
                         </Grid>
-                    </Grid>
-                    {selectedDay && <Box className={styles['on-this-day']}>
-                        On the day of {selectedDay.getDate()}/{selectedDay.getMonth()}/{selectedDay.getFullYear()} :
-                    </Box>}
+                    </Grid>}
                     <Box className={styles['activities-section']}>
                         {!selectedDay && <Box className={styles['unselected-msg']}>
                             "Choose one of the highlighted days to view activities"

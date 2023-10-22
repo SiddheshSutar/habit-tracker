@@ -3,7 +3,7 @@ import styles from './detailedView.module.scss'
 import { useEffect, useState } from 'react';
 import { habitSelector, removeHabit } from '../reduxSlices/habitSlice';
 import { getActivityStatus, daysShortTexts, generateDayArrAsPerCurrentDay } from '../helpers';
-import { Tooltip } from '@mui/material';
+import { Box, Tooltip } from '@mui/material';
 
 const DetailedView = () => {
 
@@ -30,12 +30,15 @@ const DetailedView = () => {
         }
         {
             habits.length > 0 &&
-            <>
-                <div>
+            <> 
+                <Box className={styles['title-box']}>
                     <h2 className={`${styles['title']} ${styles['']}`}>
                         Your habits
                     </h2>
-                </div>
+                    <div>
+                        The scehdule of habits can be modified under Week View
+                    </div>
+                </Box>
                 <ul>
                     {
                         habits.map((item, index) => (
