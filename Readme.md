@@ -2,6 +2,15 @@
 
 ## Getting Started
 
+The UX of this Habt Tracker app is based on two views: Detailed View and  Week View
+
+Detailed View shows habits in their weekly tags; showing statuses ( Green for 'done', Red for 'Not done' ).
+
+In both views, on top, 'Add Habit' dropdown is given to enter the habit name and create a habit entry.
+
+For tracking last 6-7 days of habits, calendar has been implemented in Week View with only last 1 week being enabled.
+A particular day can be selected out of this week to view the statuses of activities.
+
 To run in the project in local environment:
 1. First install dependencies via : npm i
 2. then run: npm start
