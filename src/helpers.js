@@ -45,6 +45,13 @@ export const getStatusValue = (habitObj, selectedDayString) => {
     else return STATUS_NONE
 }
 
+export const compareDayStrings = (str1, str2) => {
+    if(!str1 || !str2) return false
+    const date1 = new Date(str1)
+    const date2 = new Date(str2)
+    return `${date1.getDate()}/${date1.getMonth()}/${date1.getFullYear()}` === `${date2.getDate()}/${date2.getMonth()}/${date2.getFullYear()}`
+}
+
 export const generateDayArrAsPerCurrentDay = (daysArr) => {
     const currentDayObj = (new Date())
     const selectedDayIndex = new Date(currentDayObj.getTime() - 6*24*60*60*1000).getDay(); // 7 days before

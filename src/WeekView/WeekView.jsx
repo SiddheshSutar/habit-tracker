@@ -3,7 +3,7 @@ import styles from './weekview.module.scss'
 import CalendarComponent from '../components/Calendar/Calendar';
 import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, setHabitState } from '../reduxSlices/habitSlice';
-import { STATUS_DONE, STATUS_NOT_DONE, STATUS_NONE, getStatusValue } from '../helpers';
+import { STATUS_DONE, STATUS_NOT_DONE, STATUS_NONE, getStatusValue, compareDayStrings } from '../helpers';
 
 const WeekView = () => {
 
@@ -21,7 +21,8 @@ const WeekView = () => {
 
         let foundEntry = false
         daysArrUpdated = daysArrUpdated.map(item => {
-            if (item.day === selectedDayString) {
+            if (compareDayStrings(item.day, selectedDayString)) {
+                foundEntry = true
                 return {
                     ...item,
                     status: value
@@ -37,7 +38,7 @@ const WeekView = () => {
         }
 
         let newhabitsArr = [...habits].map(item => {
-            if (item.id === habitObj.id) {
+            if (compareDayStrings(item.id, habitObj.id)) {
                 return {
                     ...habitObj,
                     days: daysArrUpdated
@@ -82,7 +83,7 @@ const WeekView = () => {
                         </Grid>
                     </Grid>
                     {selectedDay && <Box className={styles['on-this-day']}>
-                        On this day of {selectedDay.getDate()}/{selectedDay.getMonth()}/{selectedDay.getFullYear()} :
+                        On the day of {selectedDay.getDate()}/{selectedDay.getMonth()}/{selectedDay.getFullYear()} :
                     </Box>}
                     <Box className={styles['activities-section']}>
                         {!selectedDay && <Box className={styles['unselected-msg']}>
@@ -107,7 +108,7 @@ const WeekView = () => {
                                                 <Grid item className={styles['sd-title-col']}>
                                                     <Box className={styles['sd-title-task']}>Weekly count:&nbsp;</Box>
                                                     <Box className={styles['sd-title-text']}>{
-                                                        `${habitObj.days.length} / 7 days completed`
+                                                        `${habitObj.days.filter(habit => habit.status === STATUS_DONE) .length} / 7 days achieved`
                                                     }</Box>
                                                 </Grid>
                                             </Grid>
