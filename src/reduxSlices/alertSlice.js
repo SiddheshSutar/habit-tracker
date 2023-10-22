@@ -1,11 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import { addToDoAsync } from './todoSlice';
 
 const INITIAL_STATE = {
-    fetchToDosStatus: null,
     addHabitStatus: null,
-    updateToDoStatus: null,
-    deleteToDoStatus: null,
+    editHabitStatus: null,
 };
 
 export const alertSlice = createSlice({
@@ -18,16 +15,7 @@ export const alertSlice = createSlice({
         setStatus: (state, action) => {
             state[Object.keys(action.payload)[0]] = Object.values(action.payload)[0]
         }
-    },
-    // extraReducers: (builder) => {
-    //     builder
-    //         .addCase(fetchToDoAsync.pending, (state, action) => {
-    //             state.fetchToDosStatus = 'loading'
-    //         })
-    //         .addCase(fetchToDoAsync.fulfilled, (state, action) => {
-    //             state.fetchToDosStatus = 'completed'
-    //         })
-    // }
+    }
 })
 
 export const alertReducer = alertSlice.reducer

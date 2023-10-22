@@ -10,7 +10,7 @@ import { memo, useRef } from "react";
 
 const Notifications_ = () => {
 
-    const { addHabitStatus } = useSelector(alertSelector)
+    const { addHabitStatus, editHabitStatus } = useSelector(alertSelector)
 
     const toastId = useRef(null);
     const dispatch = useDispatch();
@@ -25,6 +25,18 @@ const Notifications_ = () => {
         toastId.current = toast.success('Added habit ')
         setTimeout(() => {
             dispatch(reset('addHabitStatus'))
+        }, toastTimeout);
+    }
+    // if (editHabitStatus === 'loading' && toastId.current !== 'editHabitStatus:loading') {
+    //     toast.loading('Fetching todos', { autoClose: toastTimeout })
+    //     toastId.current = 'editHabitStatus:loading'
+    // }
+    if (editHabitStatus === 'completed') {
+        toast.dismiss();
+        toastId.current = null
+        toastId.current = toast.success('Habit is modified ')
+        setTimeout(() => {
+            dispatch(reset('editHabitStatus'))
         }, toastTimeout);
     }
     return (

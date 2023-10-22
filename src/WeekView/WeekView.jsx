@@ -4,6 +4,7 @@ import CalendarComponent from '../components/Calendar/Calendar';
 import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, setHabitState } from '../reduxSlices/habitSlice';
 import { STATUS_DONE, STATUS_NOT_DONE, STATUS_NONE, getStatusValue, compareDayStrings } from '../helpers';
+import { setStatus } from '../reduxSlices/alertSlice';
 
 const WeekView = () => {
 
@@ -47,6 +48,7 @@ const WeekView = () => {
         })
 
         /** TO-DO : fix logic: currently it introducs new item while editing status */
+        dispatch(setStatus({editHabitStatus: 'completed'}))
         dispatch(setHabitState({
             habits: newhabitsArr
         }))
@@ -108,14 +110,14 @@ const WeekView = () => {
                                                 <Grid item className={styles['sd-title-col']}>
                                                     <Box className={styles['sd-title-task']}>Weekly count:&nbsp;</Box>
                                                     <Box className={styles['sd-title-text']}>{
-                                                        `${habitObj.days.filter(habit => habit.status === STATUS_DONE) .length} / 7 days achieved`
+                                                        `${habitObj.days.filter(habit => habit.status === STATUS_DONE).length} / 7 days achieved`
                                                     }</Box>
                                                 </Grid>
                                             </Grid>
                                             {/* </Box> */}
                                             <Box className={styles['sd-status']}>
                                                 <Box className={styles['sd-status-title']}>Status:&nbsp;</Box>
-                                                <Box>
+                                                <Box className={styles['btn-box']}>
                                                     <ToggleButtonGroup
                                                         color="primary"
                                                         value={getStatusValue(habitObj, selectedDayString)}
@@ -133,8 +135,12 @@ const WeekView = () => {
                                                             styles['sd-current-status'] : ''
                                                             }`} value={STATUS_NONE}>none</ToggleButton>
                                                     </ToggleButtonGroup>
+                                                    <Box className={styles['guideline']}>
+                                                        Click on any of the buttons to change the status
+                                                    </Box>
                                                 </Box>
                                             </Box>
+                                            
                                         </Box>
                                     ))
 

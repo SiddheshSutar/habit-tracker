@@ -9,11 +9,11 @@ const initialState = {
       title: 'Workout',
       days: [
         {
-          day: 'Tue Oct 17 2023 00:00:00 GMT+0530 (India Standard Time)',
+          day: 'Fri Oct 20 2023 00:00:00 GMT+0530 (India Standard Time)',
           status: STATUS_NOT_DONE
         },
         {
-          day: 'Mon Oct 16 2023 00:00:00 GMT+0530 (India Standard Time)',
+          day: 'Sat Oct 21 2023 00:00:00 GMT+0530 (India Standard Time)',
           status: STATUS_DONE
         }
       ]
