@@ -22,6 +22,6 @@ To run in the project in local environment:
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 # github: https://github.com/SiddheshSutar/habit-tracker.git
-# youtube:
-# hosted URL:
+# youtube: https://youtu.be/POD4x0Yiyho
+# hosted URL: https://habit-tracker-e99a.onrender.com/
 
