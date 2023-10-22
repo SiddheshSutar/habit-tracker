@@ -1,6 +1,6 @@
 /** Primary state management file */
 import { createSlice } from '@reduxjs/toolkit'
-import { STATUS_DONE, STATUS_NOT_DONE } from '../helpers'
+import { LS_STATE, STATUS_DONE, STATUS_NOT_DONE } from '../helpers'
 
 const initialState = {
   text: '',
@@ -27,6 +27,9 @@ const initialState = {
   selectedDay: null
 }
 
+if (localStorage.getItem(LS_STATE)) {
+  initialState.habits = JSON.parse(localStorage.getItem(LS_STATE))
+}
 
 export const habitSlice = createSlice({
   name: 'habit',

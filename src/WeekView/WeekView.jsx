@@ -5,13 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, setHabitState } from '../reduxSlices/habitSlice';
 import { STATUS_DONE, STATUS_NOT_DONE, STATUS_NONE, getStatusValue, compareDayStrings, LS_STATE } from '../helpers';
 import { setStatus } from '../reduxSlices/alertSlice';
+import { useEffect } from 'react';
 
 const WeekView = () => {
 
     const { selectedDay: selectedDayString, habits } = useSelector(habitSelector)
     const dispatch = useDispatch()
 
-    localStorage.setItem(LS_STATE, habits)
+    // useEffect(() => {
+    //     localStorage.setItem(LS_STATE, JSON.stringify(habits))
+    // }, [habits])
 
     let selectedDay = ''
     if (selectedDayString) selectedDay = new Date(selectedDayString)
@@ -57,6 +60,7 @@ const WeekView = () => {
         dispatch(setHabitState({
             habits: newhabitsArr
         }))
+        localStorage.setItem(LS_STATE, JSON.stringify(newhabitsArr))
 
 
     }

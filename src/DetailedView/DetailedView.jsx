@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './detailedView.module.scss'
 import { useEffect, useState } from 'react';
 import { habitSelector, removeHabit } from '../reduxSlices/habitSlice';
-import { getActivityStatus, daysShortTexts, generateDayArrAsPerCurrentDay } from '../helpers';
+import { getActivityStatus, daysShortTexts, generateDayArrAsPerCurrentDay, LS_STATE } from '../helpers';
 import { Box, Tooltip } from '@mui/material';
 
 const DetailedView = () => {
@@ -10,13 +10,12 @@ const DetailedView = () => {
     const { habits, selectedDay: selectedDayString, } = useSelector(habitSelector)
     const dispatch = useDispatch()
 
-    localStorage.setItem(LS_STATE, habits)
+    useEffect(() => {
+        localStorage.setItem(LS_STATE, JSON.stringify(habits))
+    }, [habits])
 
     let selectedDay = ''
     if(selectedDayString) selectedDay = new Date(selectedDayString)
-
-    useEffect(() => {
-    }, [])
 
     return <div className={styles['container']}>
         {
