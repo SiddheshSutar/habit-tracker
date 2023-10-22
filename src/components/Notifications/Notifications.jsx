@@ -27,10 +27,7 @@ const Notifications_ = () => {
             dispatch(reset('addHabitStatus'))
         }, toastTimeout);
     }
-    // if (editHabitStatus === 'loading' && toastId.current !== 'editHabitStatus:loading') {
-    //     toast.loading('Fetching todos', { autoClose: toastTimeout })
-    //     toastId.current = 'editHabitStatus:loading'
-    // }
+
     if (editHabitStatus === 'completed') {
         toast.dismiss();
         toastId.current = null

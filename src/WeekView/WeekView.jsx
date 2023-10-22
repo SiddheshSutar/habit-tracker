@@ -3,7 +3,7 @@ import styles from './weekview.module.scss'
 import CalendarComponent from '../components/Calendar/Calendar';
 import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, setHabitState } from '../reduxSlices/habitSlice';
-import { STATUS_DONE, STATUS_NOT_DONE, STATUS_NONE, getStatusValue, compareDayStrings } from '../helpers';
+import { STATUS_DONE, STATUS_NOT_DONE, STATUS_NONE, getStatusValue, compareDayStrings, LS_STATE } from '../helpers';
 import { setStatus } from '../reduxSlices/alertSlice';
 
 const WeekView = () => {
@@ -11,6 +11,7 @@ const WeekView = () => {
     const { selectedDay: selectedDayString, habits } = useSelector(habitSelector)
     const dispatch = useDispatch()
 
+    localStorage.setItem(LS_STATE, habits)
 
     let selectedDay = ''
     if (selectedDayString) selectedDay = new Date(selectedDayString)
@@ -18,6 +19,11 @@ const WeekView = () => {
 
     const handleChangeStatus = (event, value, habitObj) => {
 
+        /** When status buttons are toggled;
+         * 1. Check for the correct habit to be modified
+         * 2. Check for correct day to be modified in that habit
+         * 3. Check if already entry is present then modify the value; else push new value to days array
+         */
         let daysArrUpdated = [...habitObj.days]
 
         let foundEntry = false
@@ -47,7 +53,6 @@ const WeekView = () => {
             } else return item
         })
 
-        /** TO-DO : fix logic: currently it introducs new item while editing status */
         dispatch(setStatus({ editHabitStatus: 'completed' }))
         dispatch(setHabitState({
             habits: newhabitsArr
@@ -95,7 +100,6 @@ const WeekView = () => {
                                 {
                                     habits.map((habitObj, index) => (
                                         <Box key={index} className={`${styles['habit-box']} ${styles['rounded-container']}`}>
-                                            {/* <Box className={styles['sd-title']}> */}
                                             <Grid container className={styles['sd-title']}>
                                                 <Grid item className={styles['sd-title-col']}>
                                                     <Box className={styles['sd-title-task']}>Task:&nbsp;</Box>

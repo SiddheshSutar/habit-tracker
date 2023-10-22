@@ -1,8 +1,12 @@
+/** Primary state management file */
 import { createSlice } from '@reduxjs/toolkit'
 import { STATUS_DONE, STATUS_NOT_DONE } from '../helpers'
 
 const initialState = {
   text: '',
+  /** @param habits: Each habit is assumed to be having id given as current date, title and list of days.
+   * id field is operated by converting to date format in operations.
+   */
   habits: [
     {
       id: 'Tue Oct 17 2023 00:00:00 GMT+0530 (India Standard Time)',

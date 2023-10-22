@@ -66,3 +66,5 @@ export const generateDayArrAsPerCurrentDay = (daysArr) => {
 
     return newArr
 }
+
+export const LS_STATE = 'habit_tracker_state'

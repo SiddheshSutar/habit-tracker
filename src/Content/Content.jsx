@@ -1,5 +1,3 @@
-import DetailedView from '../DetailedView/DetailedView';
-import Form from '../Form/Form';
 import Navbar from '../Navbar/Navbar';
 import styles from './content.module.scss'
 

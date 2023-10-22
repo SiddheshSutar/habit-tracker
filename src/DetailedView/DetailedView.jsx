@@ -9,17 +9,14 @@ const DetailedView = () => {
 
     const { habits, selectedDay: selectedDayString, } = useSelector(habitSelector)
     const dispatch = useDispatch()
-    const [hoveredItemIndex, setHoveredItemIndex] = useState(null)
+
+    localStorage.setItem(LS_STATE, habits)
 
     let selectedDay = ''
     if(selectedDayString) selectedDay = new Date(selectedDayString)
 
     useEffect(() => {
     }, [])
-
-    const handleToggleButtonHover = hoveredIndex => {
-        setHoveredItemIndex(hoveredIndex)
-    }
 
     return <div className={styles['container']}>
         {
@@ -44,11 +41,7 @@ const DetailedView = () => {
                         habits.map((item, index) => (
                             <li key={index} className={`${styles['li-tag']} ${styles['rounded-container']}`}>
                                 <div className={styles['item-row']}>
-                                    <h2 className={`${styles['item-col']}`}
-                                        style={{
-                                            // textDecoration: item.completed ? 'line-through' : 'none'
-                                        }}
-                                    >
+                                    <h2 className={`${styles['item-col']}`}>
                                         {
                                             item.title.length > 28 ?
                                             `${item.title.substring(0,28)}...` :

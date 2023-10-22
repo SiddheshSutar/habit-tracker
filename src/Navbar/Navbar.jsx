@@ -1,15 +1,12 @@
-import { Box, Button, Container, Grid, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Tab, Tabs, Typography } from '@mui/material';
 import styles from './navbar.module.scss'
 import { useState } from 'react';
-import { DetailsContent } from '../Content/Content';
-import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
 import { habitSelector, toggleSection } from '../reduxSlices/habitSlice';
 import { CollapseExpand } from '../components/CollapseExpand/CollapseExpand';
 import Form from '../Form/Form';
 import DetailedView from '../DetailedView/DetailedView';
 import WeekView from '../WeekView/WeekView';
-// import CustomModal from '../DetailedView/CustomModal';
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -52,6 +49,7 @@ const Tabbs = (props) => {
     />
 }
 
+/** Application flow comprises of Navbar first, then the children inside it under Tabs component */
 const Navbar = () => {
     const [value, setValue] = useState(0);
 
@@ -75,15 +73,6 @@ const Navbar = () => {
                     <Tab label="Detailed View" />
                     <Tab label="Week View" />
                 </Tabbs>
-                {/* <Button type='button' variant='outlined'
-                    className={styles['add-btn']}
-                    startIcon={<AddIcon />}
-                    onClick={e => {
-                        dispatch(toggleSection(true))
-                    }}
-                >
-                    Add Habit
-                </Button> */}
             </Box>
             <CollapseExpand
                 title={'Add Habit'}
