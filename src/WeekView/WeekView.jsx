@@ -48,7 +48,7 @@ const WeekView = () => {
         })
 
         /** TO-DO : fix logic: currently it introducs new item while editing status */
-        dispatch(setStatus({editHabitStatus: 'completed'}))
+        dispatch(setStatus({ editHabitStatus: 'completed' }))
         dispatch(setHabitState({
             habits: newhabitsArr
         }))
@@ -64,14 +64,9 @@ const WeekView = () => {
                 </Grid>
                 <Grid item lg={6} xl={6} className={styles['lh-box']}>
                     <h2>Activities per day</h2>
-
-                    {/* {selectedDay && <Box className={styles['on-this-day']}>
-                    </Box>} */}
                     {selectedDay && <Grid container alignItems={'center'} className={styles['title-section']}>
                         <Grid item lg={7}>
-                            {/* <h2>Activities per day</h2> */}
-                        On the day of {selectedDay.getDate()}/{selectedDay.getMonth()}/{selectedDay.getFullYear()} :
-
+                            On the day of {selectedDay.getDate()}/{selectedDay.getMonth()}/{selectedDay.getFullYear()} :
                         </Grid>
                         <Grid item lg={5} className={styles['btn-col']}>
                             {
@@ -143,10 +138,8 @@ const WeekView = () => {
                                                     </Box>
                                                 </Box>
                                             </Box>
-                                            
                                         </Box>
                                     ))
-
                                 }
                             </Box>
                         }
